@@ -2,6 +2,15 @@
 
 This repository contains a **global Opencode skill** that integrates the Ruflo multi‑agent system with any OpenCode environment. It provides two lightweight Bash scripts that:
 
+- **Why it’s optimized for GPT‑OSS‑120b**
+  - **Minimal skill definition** – `SKILL.md` is ~ 900 bytes, well under the recommended 2 KB limit, so the model loads almost no extra data.
+  - **All heavy work delegated to Ruflo CLI** – the scripts simply invoke `npx ruflo …`. The LLM only sees short prompts and tool results, keeping token usage low and latency minimal.
+  - **Small tool set** – only `Bash`, `Read`, and `Write` tools are used; no large pre‑loaded tool lists that would increase the model’s input size.
+  - **Stateless plan generation** – each `$ruflo-plan` call generates a fresh prompt, avoiding long context accumulation.
+  - **Self‑contained** – no additional Node modules or binaries are bundled, so the runtime footprint is tiny.
+
+These design choices make the skill a perfect fit for the **GPT‑OSS‑120b** model, which excels at language reasoning but benefits from off‑loading compute‑heavy tasks to external tools.
+
 1. **Launch the Ruflo UI** (`ruflo-wrapper`).
 2. **Generate a detailed development plan** (`ruflo-plan`) using Ruflo’s `goal‑plan` skill, which coordinates all relevant agents.
 
