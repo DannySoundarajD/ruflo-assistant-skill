@@ -35,20 +35,5 @@ Opencode will automatically discover the skill. You can then invoke the commands
 $ruflo-wrapper
 $ruflo-plan
 ```
-
-## Publishing to GitHub
-
-The repository is ready to be pushed to a new GitHub repo. After creating an empty repo (e.g. `your-username/ruflo-assistant-skill`), run:
-```bash
-cd ruflo-assistant-skill
-git init
-git add .
-git commit -m "Add global Ruflo Assistant skill (optimized for GPT‑OSS‑120b)"
-# Replace the URL with your repository URL
-git remote add origin git@github.com:your-username/ruflo-assistant-skill.git
-git push -u origin master
-```
-The skill can now be installed directly from the GitHub repository or shared with other Opencode users.
-
 ---
 *Created by OpenCode to turn Ruflo into an optimized global skill for GPT‑OSS‑120b.*
